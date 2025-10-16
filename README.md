@@ -4,6 +4,10 @@ A clean, responsive, and fully-featured web application designed to help student
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-6a5acd?style=for-the-badge)](https://bancunguye66.github.io/student-finance-tracker_ALU/)
 
+## 🎥 Demo Video
+
+[**Watch the full video demo on Loom**](https://www.loom.com/share/a7a7c24c63214781987b91069f4ae56d)
+
 
 
 ## ✅ Features

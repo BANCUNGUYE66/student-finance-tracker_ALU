@@ -1,61 +1,68 @@
-# Student Finance Tracker_ALU
+# Student Finance Tracker 📊
 
-A single-page web application to help students track their expenses and income efficiently.
+A clean, responsive, and fully-featured web application designed to help students track their finances. This single-page application is built with vanilla JavaScript, focusing on a modular codebase, modern design principles, and full accessibility.
 
-## Chosen Theme / Concept
+[![Live Demo](https://img.shields.io/badge/Live-Demo-6a5acd?style=for-the-badge)](https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/)
 
-(Describe your visual theme here. For example: A clean, minimalist design with a focus on data clarity and accessibility. It uses a card-based layout on mobile and a traditional table on desktop for optimal viewing.)
 
-## Feature List
 
--   [x] Add, Edit, and Delete financial records (CRUD).
--   [x] Persistent storage using `localStorage`.
--   [x] Dashboard with key stats (total spent, top category, etc.).
--   [ ] Live search with regular expression support.
--   [ ] Sort records by date, description, or amount.
--   [ ] Light and Dark theme toggle.
--   [x] Fully responsive design for mobile, tablet, and desktop.
--   [x] Accessible (WCAG AA): Keyboard navigable, semantic HTML, ARIA roles.
--   [ ] Import and Export data as JSON.
+## ✅ Features
 
-## Regex Catalog
+* **Full CRUD Functionality:** Add, read, update, and delete financial records seamlessly.
+* **Persistent Storage:** All data is saved in the browser's `localStorage`, so your records are safe across sessions.
+* **Dynamic Dashboard:** Get an at-a-glance overview of your finances with stats for total records, total amount spent, and your top spending category.
+* **Responsive Design:** A polished, mobile-first design that provides a card-based view on mobile and a full table view on desktop.
+* **Live Search & Sort:** Instantly filter records using text or regular expressions. Sort your data by date, amount, or description in ascending or descending order.
+* **Modern Theming:** A beautiful light/dark mode toggle that persists based on user preference.
+* **Data Portability:** Easily import and export your financial records as a JSON file for backup or migration.
+* **Robust Validation:** The input form uses regular expressions to validate data, ensuring data integrity.
 
-Here are the regular expressions used for validation:
+## 🛠️ Tech Stack
 
-1.  **Description**: `/^\S(?:.*\S)?$/`
-    -   *Purpose*: Ensures the description is not empty or just whitespace.
-    -   *Example Match*: `Coffee`, `My new textbook`
-    -   *Example No Match*: `   `, `` (empty string)
+* **HTML5:** For semantic structure and accessibility.
+* **CSS3:** For modern styling, responsiveness, and theming (CSS Variables).
+* **JavaScript (ES6+):** For all application logic, including DOM manipulation, state management, and event handling using ES Modules.
 
-2.  **Amount**: `/^(0|[1-9]\d*)(\.\d{1,2})?$/`
-    -   *Purpose*: Validates a positive number with up to two decimal places.
-    -   *Example Match*: `12`, `55.50`, `0.99`
-    -   *Example No Match*: `-10`, `12.345`, `abc`
-    
-3.  **Duplicate Word**: `/\b(\w+)\s+\1\b/i`
-    -   *Purpose*: Catches accidentally repeated words.
-    -   *Example Match*: `Bus pass for for the month`
-    -   *Example No Match*: `Bus pass for the month`
+## 🚀 Setup and Installation
 
-*(...add the other regex patterns here...)*
+To run this project locally:
 
-## Keyboard Navigation Map
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git](https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git)
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd YOUR-REPO-NAME
+    ```
+3.  Open the `index.html` file in your favorite web browser.
 
--   **`Tab`**: Move focus between all interactive elements (links, buttons, inputs).
--   **`Shift + Tab`**: Move focus backward.
--   **`Enter`**: Activate a focused button or submit a form.
--   **`Escape`**: Close the Add/Edit modal form.
--   **(Optional) `ArrowUp`/`ArrowDown`**: Navigate records in the table.
+## Key Features & Implementation
 
-## Accessibility Notes
+### Responsive Design
+The application is built with a mobile-first approach.
+* **On screens smaller than 768px**, records are displayed as individual cards for optimal readability and touch interaction.
+* **On screens larger than 768px**, the layout switches to a traditional table view to make use of the wider screen space.
 
--   **Skip Link**: The first focusable element is a "Skip to main content" link for screen reader users.
--   **Semantic HTML**: Uses `<header>`, `<nav>`, `<main>`, `<section>`, and `<footer>` for clear document structure.
--   **ARIA Live Region**: The dashboard's cap/target status uses `role="status"` and `aria-live="polite"` to announce updates without interrupting the user.
--   **Visible Focus**: All interactive elements have a clear and consistent focus ring.
+### Regex Validation Catalog
+The "Add/Edit Record" form uses the following regular expressions for robust input validation:
 
-## How to Run / Test
+| Field         | Regex Pattern                  | Purpose                                        |
+| :------------ | :----------------------------- | :--------------------------------------------- |
+| **Description** | `^\S(?:.*\S)?$`                | Ensures the field is not empty or just whitespace. |
+| **Amount** | `^(0|[1-9]\d*)(\.\d{1,2})?$`    | Validates a positive number with up to 2 decimals. |
+| **Category** | `^[A-Za-z]+(?:[ -][A-Za-z]+)*$` | Allows letters, spaces, and hyphens for category names. |
+| **Duplicate Word**| `\b(\w+)\s+\1\b`                 | An advanced check to catch accidental repeated words. |
 
-1.  Clone the repository.
-2.  Open the `index.html` file in a modern web browser.
-3.  To run tests, open the browser's developer console to check for errors and log messages.
+### Accessibility ♿
+Accessibility was a key focus during development. The application includes:
+* **Semantic HTML:** Proper use of `<header>`, `<main>`, `<nav>`, and `<section>` landmarks.
+* **Keyboard Navigation:** The entire application is fully navigable using only the keyboard (`Tab`, `Shift+Tab`, `Enter`).
+* **Visible Focus States:** All interactive elements have a clear and consistent focus ring.
+* **Form Labels:** All form inputs are properly linked to their corresponding labels for screen reader compatibility.
+* **Skip Link:** A "Skip to main content" link is the first focusable element for users who want to bypass the navigation.
+
+### Keyboard Navigation Map
+* **`Tab`**: Move focus forward to the next interactive element.
+* **`Shift + Tab`**: Move focus backward.
+* **`Enter`**: Activate a focused button or submit a form.

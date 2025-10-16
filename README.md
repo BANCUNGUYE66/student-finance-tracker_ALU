@@ -2,7 +2,7 @@
 
 A clean, responsive, and fully-featured web application designed to help students track their finances. This single-page application is built with vanilla JavaScript, focusing on a modular codebase, modern design principles, and full accessibility.
 
-[![Live Demo][(https://bancunguye66.github.io/student-finance-tracker_ALU/)](https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-6a5acd?style=for-the-badge)](https://bancunguye66.github.io/student-finance-tracker_ALU/)
 
 
 
@@ -29,22 +29,24 @@ To run this project locally:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git](https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git)
+    git clone [https://github.com/BANCUNGUYE66/student-finance-tracker_ALU.git](https://github.com/BANCUNGUYE66/student-finance-tracker_ALU.git)
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd YOUR-REPO-NAME
+    cd student-finance-tracker_ALU
     ```
 3.  Open the `index.html` file in your favorite web browser.
 
 ## Key Features & Implementation
 
 ### Responsive Design
+
 The application is built with a mobile-first approach.
 * **On screens smaller than 768px**, records are displayed as individual cards for optimal readability and touch interaction.
 * **On screens larger than 768px**, the layout switches to a traditional table view to make use of the wider screen space.
 
 ### Regex Validation Catalog
+
 The "Add/Edit Record" form uses the following regular expressions for robust input validation:
 
 | Field         | Regex Pattern                  | Purpose                                        |
@@ -55,6 +57,7 @@ The "Add/Edit Record" form uses the following regular expressions for robust inp
 | **Duplicate Word**| `\b(\w+)\s+\1\b`                 | An advanced check to catch accidental repeated words. |
 
 ### Accessibility ♿
+
 Accessibility was a key focus during development. The application includes:
 * **Semantic HTML:** Proper use of `<header>`, `<main>`, `<nav>`, and `<section>` landmarks.
 * **Keyboard Navigation:** The entire application is fully navigable using only the keyboard (`Tab`, `Shift+Tab`, `Enter`).
@@ -63,6 +66,7 @@ Accessibility was a key focus during development. The application includes:
 * **Skip Link:** A "Skip to main content" link is the first focusable element for users who want to bypass the navigation.
 
 ### Keyboard Navigation Map
+
 * **`Tab`**: Move focus forward to the next interactive element.
 * **`Shift + Tab`**: Move focus backward.
 * **`Enter`**: Activate a focused button or submit a form.

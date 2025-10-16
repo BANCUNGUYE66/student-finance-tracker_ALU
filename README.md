@@ -2,7 +2,7 @@
 
 A clean, responsive, and fully-featured web application designed to help students track their finances. This single-page application is built with vanilla JavaScript, focusing on a modular codebase, modern design principles, and full accessibility.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-6a5acd?style=for-the-badge)](https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/)
+[![Live Demo](https://bancunguye66.github.io/student-finance-tracker_ALU/)](https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/)
 
 
 

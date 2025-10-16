@@ -1,38 +1,85 @@
 import { appState } from './state.js';
 
 /**
- * Renders the records into the container.
- * Switches between table (desktop) and card (mobile) view.
- * @param {Array<object>} records - The records to display.
+ * @param {Array<object>} records
  */
 export function renderRecords(records) {
     const container = document.getElementById('records-container');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = '';
 
     if (records.length === 0) {
-        container.innerHTML = '<p>No records found. Add one to get started!</p>';
+        container.innerHTML = '<p class="empty-state">No records found. Try clearing your search or adding a new record!</p>';
         return;
     }
 
     if (window.innerWidth < 768) {
-        const cardView = document.createElement('div');
-        cardView.className = 'records-cards';
-        cardView.innerHTML = `<p>Card view for ${records.length} records will show here.</p>`
-        container.appendChild(cardView);
+        renderCardView(records, container);
     } else {
-        const tableView = document.createElement('table');
-        tableView.className = 'records-table';
-        tableView.innerHTML = `
-            <thead><tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th></tr></thead>
-            <tbody><tr><td>Sample</td><td>$10.00</td><td>Food</td><td>2025-10-16</td></tr></tbody>
-        `;
-        container.appendChild(tableView);
+        renderTableView(records, container);
     }
 }
 
+function renderTableView(records, container) {
+    const table = document.createElement('table');
+    table.className = 'records-table';
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    `;
+    const tbody = document.createElement('tbody');
+    records.forEach(record => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${record.highlightedDescription || record.description}</td>
+            <td>$${record.amount.toFixed(2)}</td>
+            <td>${record.category}</td>
+            <td>${new Date(record.date).toLocaleDateString()}</td>
+            <td>
+                <button class="edit-btn" data-id="${record.id}" title="Edit">✏️</button>
+                <button class="delete-btn" data-id="${record.id}" title="Delete">🗑️</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    container.appendChild(table);
+}
+
+function renderCardView(records, container) {
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'records-cards';
+    records.forEach(record => {
+        const card = document.createElement('div');
+        card.className = 'record-card';
+        card.innerHTML = `
+            <div class="card-header">
+                <strong>${record.highlightedDescription || record.description}</strong>
+                <span class="card-amount">$${record.amount.toFixed(2)}</span>
+            </div>
+            <div class="card-body">
+                <span>Category: ${record.category}</span>
+                <span>Date: ${new Date(record.date).toLocaleDateString()}</span>
+            </div>
+            <div class="card-actions">
+                <button class="edit-btn" data-id="${record.id}">Edit</button>
+                <button class="delete-btn" data-id="${record.id}">Delete</button>
+            </div>
+        `;
+        cardsContainer.appendChild(card);
+    });
+    container.appendChild(cardsContainer);
+}
+
+
 /**
- * Renders the dashboard statistics.
- * @param {object} stats 
+ * @param {object} stats
  */
 export function renderDashboard(stats) {
     const container = document.getElementById('dashboard-stats');
@@ -43,7 +90,7 @@ export function renderDashboard(stats) {
         </div>
         <div class="stat-item">
             <h4>Total Spent</h4>
-            <p>${stats.totalAmount}</p>
+            <p>$${stats.totalAmount.toFixed(2)}</p>
         </div>
         <div class="stat-item">
             <h4>Top Category</h4>
@@ -53,30 +100,34 @@ export function renderDashboard(stats) {
 }
 
 /**
- * Toggles the visibility of the Add/Edit form modal.
- * @param {boolean} show - Whether to show or hide the modal.
- * @param {object | null} record - The record data to populate the form with (for editing).
+ * @param {object | null} record
  */
+export function showAndPopulateForm(record = null) {
+    const form = document.getElementById('record-form');
+    const formTitle = form.querySelector('h3');
+    
+    form.reset(); 
+    document.getElementById('record-id').value = ''; 
+    if (record) {
+        formTitle.textContent = 'Edit Record';
+        document.getElementById('record-id').value = record.id;
+        document.getElementById('description').value = record.description;
+        document.getElementById('amount').value = record.amount;
+        document.getElementById('category').value = record.category;
+        document.getElementById('date').value = record.date;
+    } else {
+        formTitle.textContent = 'Add a New Record';
+    }
+}
+
 
 export function populateCategoryDropdown() {
     const categorySelect = document.getElementById('category');
-    if (!categorySelect) return;
-
     categorySelect.innerHTML = '';
-
     appState.categories.forEach(category => {
         const option = document.createElement('option');
         option.value = category;
         option.textContent = category;
         categorySelect.appendChild(option);
     });
-}
-
-/**
- * Updates the ARIA live region for cap/target status.
- * @param {string} message 
- */
-export function updateCapStatus(message) {
-    const statusEl = document.getElementById('cap-target-status');
-    statusEl.textContent = message;
 }

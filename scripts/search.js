@@ -1,36 +1,50 @@
-
 /**
- * Searches records based on a regex pattern.
- * @param {string} query
- * @param {Array<object>} records
- * @returns {{results: Array<object>, error: string | null}}
+ * @param {string} query 
+ * @param {Array<object>} records 
+ * @returns {Array<object>}
  */
 export function searchRecords(query, records) {
     if (!query) {
-        return { results: records, error: null };
+        return records.map(r => ({ ...r, highlightedDescription: r.description }));
     }
-
+    
+    let pattern;
     try {
-        const pattern = new RegExp(query, 'gi'); 
-        const results = records.filter(record => pattern.test(record.description));
-
-        results.forEach(record => {
-            record.highlightedDescription = record.description.replace(pattern, (match) => `<mark>${match}</mark>`);
-        });
-
-        return { results, error: null };
+        pattern = new RegExp(query, 'gi');
     } catch (e) {
-        return { results: [], error: "Invalid regular expression." };
+        return [];
     }
+    
+    const results = records.filter(record => pattern.test(record.description));
+
+    return results.map(record => ({
+        ...record,
+        highlightedDescription: record.description.replace(pattern, (match) => `<mark>${match}</mark>`)
+    }));
 }
 
 /**
- * Sorts records by a given key and direction.
  * @param {Array<object>} records 
- * @param {string} key
+ * @param {string} key 
  * @param {'asc' | 'desc'} direction 
- * @returns {Array<object>}
+ * @returns {Array<object>} 
  */
 export function sortRecords(records, key, direction = 'asc') {
-    return records;
+    const sortedRecords = [...records];
+
+    sortedRecords.sort((a, b) => {
+        const valA = a[key];
+        const valB = b[key];
+
+        let comparison = 0;
+        if (valA > valB) {
+            comparison = 1;
+        } else if (valA < valB) {
+            comparison = -1;
+        }
+        
+        return direction === 'desc' ? comparison * -1 : comparison;
+    });
+
+    return sortedRecords;
 }

@@ -1,5 +1,3 @@
-
-
 import { appState, saveState } from "./state.js";
 
 export function applyTheme() {

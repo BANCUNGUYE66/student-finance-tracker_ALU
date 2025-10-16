@@ -1,0 +1,99 @@
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+}
+
+
+header, main, footer {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+main {
+    padding-top: 1rem;
+}
+
+
+.view {
+    display: none;
+}
+.view.active-view {
+    display: block;
+}
+
+
+mark {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2px;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+
+.records-table { 
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+@media (max-width: 1024px) {
+    /* Adjust layout for tablets */
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    
+    .records-table {
+        display: none; 
+    }
+    .records-cards { 
+        display: grid;
+        gap: 1rem;
+    }
+}

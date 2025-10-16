@@ -1,0 +1,101 @@
+[
+    {
+        "id": "rec1",
+        "description": "  University Textbooks ",
+        "amount": 150.75,
+        "category": "Books",
+        "date": "2025-09-01",
+        "createdAt": "2025-09-01T10:00:00Z",
+        "updatedAt": "2025-09-01T10:00:00Z"
+    },
+    {
+        "id": "rec2",
+        "description": "Weekly groceries",
+        "amount": 55.20,
+        "category": "Food",
+        "date": "2025-09-05",
+        "createdAt": "2025-09-05T12:30:00Z",
+        "updatedAt": "2025-09-05T12:30:00Z"
+    },
+    {
+        "id": "rec3",
+        "description": "Bus pass for September",
+        "amount": 45.00,
+        "category": "Transport",
+        "date": "2025-09-02",
+        "createdAt": "2025-09-02T08:15:00Z",
+        "updatedAt": "2025-09-02T08:15:00Z"
+    },
+    {
+        "id": "rec4",
+        "description": "Cinema ticket - movie night",
+        "amount": 12.50,
+        "category": "Entertainment",
+        "date": "2025-09-10",
+        "createdAt": "2025-09-10T19:00:00Z",
+        "updatedAt": "2025-09-10T19:00:00Z"
+    },
+    {
+        "id": "rec5",
+        "description": "Tuition Fee - First Installment",
+        "amount": 2500,
+        "category": "Fees",
+        "date": "2025-08-30",
+        "createdAt": "2025-08-30T14:00:00Z",
+        "updatedAt": "2025-08-30T14:00:00Z"
+    },
+    {
+        "id": "rec6",
+        "description": "New backpack",
+        "amount": 35.99,
+        "category": "Other",
+        "date": "2025-09-03",
+        "createdAt": "2025-09-03T11:45:00Z",
+        "updatedAt": "2025-09-03T11:45:00Z"
+    },
+    {
+        "id": "rec7",
+        "description": "Coffee with friends friends",
+        "amount": 8.50,
+        "category": "Food",
+        "date": "2025-09-08",
+        "createdAt": "2025-09-08T16:20:00Z",
+        "updatedAt": "2025-09-08T16:20:00Z"
+    },
+    {
+        "id": "rec8",
+        "description": "Lab equipment fee",
+        "amount": 75.00,
+        "category": "Fees",
+        "date": "2025-09-01",
+        "createdAt": "2025-09-01T10:05:00Z",
+        "updatedAt": "2025-09-01T10:05:00Z"
+    },
+    {
+        "id": "rec9",
+        "description": "Concert ticket",
+        "amount": 65,
+        "category": "Entertainment",
+        "date": "2025-10-15",
+        "createdAt": "2025-09-12T18:00:00Z",
+        "updatedAt": "2025-09-12T18:00:00Z"
+    },
+    {
+        "id": "rec10",
+        "description": "Donation",
+        "amount": 20.00,
+        "category": "Other",
+        "date": "2025-09-14",
+        "createdAt": "2025-09-14T13:00:00Z",
+        "updatedAt": "2025-09-14T13:00:00Z"
+    },
+    {
+        "id": "rec11",
+        "description": "Last minute train ticket",
+        "amount": 22.80,
+        "category": "Transport",
+        "date": "2025-12-24",
+        "createdAt": "2025-09-15T09:00:00Z",
+        "updatedAt": "2025-09-15T09:00:00Z"
+    }
+]

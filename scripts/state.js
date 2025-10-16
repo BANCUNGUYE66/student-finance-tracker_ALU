@@ -1,9 +1,9 @@
 
 import { loadData, saveData } from './storage.js';
-
+import seedData from '../seed.json' with { type: 'json' };
 
 const defaultState = {
-    records: [],
+    records: [], 
     categories: ["Food", "Books", "Transport", "Entertainment", "Fees", "Other"],
     settings: {
         theme: 'light',
@@ -12,33 +12,22 @@ const defaultState = {
     }
 };
 
-export const appState = {
-    // This will be populated on initialization
-};
+export const appState = {};
 
-
-export async function initializeState() {
+export function initializeState() {
     const loadedData = loadData();
     if (loadedData) {
         Object.assign(appState, loadedData);
     } else {
-        // No data in storage, use defaults and load seed data
         Object.assign(appState, defaultState);
-        try {
-            const response = await fetch('../seed.json');
-            appState.records = await response.json();
-            saveState(); // Save the initial seed data
-        } catch (error) {
-            console.error("Failed to load seed data:", error);
-        }
+        appState.records = seedData; 
+        saveState();
     }
 }
-
 
 export function saveState() {
     saveData(appState);
 }
-
 
 export function addRecord(record) {
     appState.records.push(record);

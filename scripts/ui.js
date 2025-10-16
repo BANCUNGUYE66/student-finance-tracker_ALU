@@ -1,4 +1,4 @@
-
+import { appState } from './state.js';
 
 /**
  * Renders the records into the container.
@@ -9,13 +9,23 @@ export function renderRecords(records) {
     const container = document.getElementById('records-container');
     container.innerHTML = ''; // Clear existing content
 
+    if (records.length === 0) {
+        container.innerHTML = '<p>No records found. Add one to get started!</p>';
+        return;
+    }
+
     if (window.innerWidth < 768) {
         const cardView = document.createElement('div');
         cardView.className = 'records-cards';
+        cardView.innerHTML = `<p>Card view for ${records.length} records will show here.</p>`
         container.appendChild(cardView);
     } else {
         const tableView = document.createElement('table');
         tableView.className = 'records-table';
+        tableView.innerHTML = `
+            <thead><tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th></tr></thead>
+            <tbody><tr><td>Sample</td><td>$10.00</td><td>Food</td><td>2025-10-16</td></tr></tbody>
+        `;
         container.appendChild(tableView);
     }
 }
@@ -44,25 +54,22 @@ export function renderDashboard(stats) {
 
 /**
  * Toggles the visibility of the Add/Edit form modal.
- * @param {boolean} show 
- * @param {object | null} record 
+ * @param {boolean} show - Whether to show or hide the modal.
+ * @param {object | null} record - The record data to populate the form with (for editing).
  */
-export function toggleFormModal(show, record = null) {
-    const modal = document.getElementById('form-modal');
-    const formTitle = document.getElementById('form-title');
-    const form = document.getElementById('record-form');
 
-    if (show) {
-        form.reset();
-        if (record) {
-            formTitle.textContent = 'Edit Record';
-        } else {
-            formTitle.textContent = 'Add Record';
-        }
-        modal.hidden = false;
-    } else {
-        modal.hidden = true;
-    }
+export function populateCategoryDropdown() {
+    const categorySelect = document.getElementById('category');
+    if (!categorySelect) return;
+
+    categorySelect.innerHTML = '';
+
+    appState.categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
+    });
 }
 
 /**

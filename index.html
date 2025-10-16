@@ -23,38 +23,60 @@
     </header>
 
     <main id="main-content">
-        <section id="dashboard" class="view active-view">
-            <h2>Dashboard</h2>
-            <div id="dashboard-stats" class="stats-container">
-                </div>
-            <div id="cap-target-status" role="status" aria-live="polite">
-                </div>
-        </section>
+    <section id="dashboard" class="view active-view">
+        <h2>Dashboard</h2>
+        <div id="dashboard-stats" class="stats-container">
+            </div>
+        <div id="cap-target-status" role="status" aria-live="polite">
+            </div>
 
-        <section id="records" class="view">
-            <h2>All Records</h2>
-            <div class="records-controls">
-                <input type="search" id="search-input" placeholder="Search records (regex enabled)...">
-                <button id="add-record-btn">Add New Record</button>
-            </div>
-            <div id="records-container">
-                </div>
-        </section>
+        <form id="record-form" class="dashboard-form">
+            <h3>Add a New Record</h3>
+            <input type="hidden" id="record-id">
+            
+            <label for="description">Description:</label>
+            <input type="text" id="description" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" step="0.01" required>
 
-        <section id="settings" class="view">
-            <h2>Settings</h2>
-            <div class="setting-item">
-                <label for="theme-toggle">Theme</label>
-                <button id="theme-toggle">Toggle Light/Dark Mode</button>
+            <label for="category">Category:</label>
+            <select id="category" required>
+                </select>
+            
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+            
+            <div class="form-buttons">
+                <button type="submit">Save Record</button>
             </div>
-            <div class="setting-item">
-                <h3>Data Management</h3>
-                <button id="export-json-btn">Export Data (JSON)</button>
-                <label for="import-json-input" class="button-label">Import Data (JSON)</label>
-                <input type="file" id="import-json-input" accept=".json" style="display:none;">
+        </form>
+    </section>
+
+    <section id="records" class="view">
+        <h2>All Records</h2>
+        <div class="records-controls">
+            <input type="search" id="search-input" placeholder="Search records (regex enabled)...">
+            <button id="add-record-btn">Add New Record</button>
+        </div>
+        <div id="records-container">
             </div>
-        </section>
-    </main>
+    </section>
+
+    <section id="settings" class="view">
+    <h2>Settings</h2>
+    <div class="setting-item">
+        <label for="theme-toggle">Theme</label>
+        <button id="theme-toggle">Toggle Light/Dark Mode</button>
+    </div>
+    <div class="setting-item">
+        <h3>Data Management</h3>
+        <button id="export-json-btn">Export Data (JSON)</button>
+        <label for="import-json-input" class="button-label">Import Data (JSON)</label>
+        <input type="file" id="import-json-input" accept=".json" style="display:none;">
+    </div>
+</section>
+</main>
 
     <footer>
         <p>&copy; 2025 Student Finance Tracker</p>
